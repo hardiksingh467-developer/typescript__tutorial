@@ -83,3 +83,117 @@ a = true;
 
 let b = 10;
 b = true; // This will cause an error, as 'b' is inferred to be of type 'number' and cannot be assigned a boolean value
+
+// In TypeScript we can specify union of types for the same variable
+let myVariableWithMultiDataType: number | string;
+myVariableWithMultiDataType = 10; // This is allowed
+myVariableWithMultiDataType = "Hello"; // This is also allowed
+// myDataType = true; // This will cause an error, as 'true' is not a valid type for 'myDataType'
+
+
+
+// FUNCTIONS
+function add(num1: number, num2: number){
+    return num1 + num2;
+}
+// In TypeScript, parameters byv default are required, but you can make them optional by adding a '?' after the parameter name
+function addOptional(num1: number, num2?: number){
+    if(num2 === undefined){
+        return num1;
+    }
+    return num1 + num2;
+}
+// We also have default parameters in TypeScript, which allows you to specify a default value for a parameter
+function addWithDefault(num1: number, num2: number = 10){
+    return num1 + num2;
+}
+
+
+
+// INTERFACES
+// It is possible to specify an Object as a Type in TypeScript, this is done using Interfaces
+function fullName(person: { firstName: string, lastName: string }) {
+    return `${person.firstName} ${person.lastName}`;
+}
+
+let p = {
+    firstName: "John",
+    lastName: "Doe"
+};
+
+let p2 = {
+    firstName: "Brian"
+};
+
+console.log(fullName(p)); // Output: John Doe 
+// Now just imagine if we need to declare multiple functions with the same object, and not only that but in some cases the object we will use will have let's say 10 to 20 properties, that will become a nightmare
+// we can solve that using interfaces
+interface Person {
+    firstName: string;
+    lastName?: string;// now the lastName property is optional
+}
+
+function fullNameInterface(personObject: Person) {
+    return `${personObject.firstName} ${personObject.lastName}`;
+}
+
+console.log(fullNameInterface(p));
+console.log(fullNameInterface(p2));
+
+
+
+// CLASSES and ACCESS MODIFIERS
+
+// Create a class in TypeScript
+class Employee {
+    // Properties
+    private id: number;
+    public name: string;
+    protected department: string;
+
+    // Constructor
+    constructor(id: number, name: string, department: string) {
+        this.id = id;
+        this.name = name;
+        this.department = department;
+    }
+
+    // Method
+    public getDetails(): string {
+        return `ID: ${this.id}, Name: ${this.name}, Department: ${this.department}`;
+    }
+}
+
+let emp1 = new Employee(1, "John Doe", "Engineering");
+console.log(emp1.getDetails()); // Output: ID: 1, Name: John Doe, Department: Engineering
+// console.log(emp1.id); // This will cause an error, as 'id' is a private property
+// console.log(emp1.department); // This will also cause an error, as 'department' is a protected property
+console.log(emp1.name); // Output: John Doe
+// In TypeScript, we have three access modifiers: public, private, and protected
+// 1. public: The property or method can be accessed from anywhere.
+// 2. private: The property or method can only be accessed from within the class.
+// 3. protected: The property or method can be accessed from within the class and its subclasses.
+
+// Using extends we can inherit properties and methods from another class
+// This is called inheritance in TypeScript
+// The class that is being inherited from is called the base class or parent class, and the class that is inheriting is called the derived class or child class
+// The derived class can access the public and protected properties and methods of the base class, but not the private properties and methods
+// The derived class can also have its own properties and methods, and can override the methods of the base class
+class Manager extends Employee {
+    private teamSize: number;
+
+    // The child class needs to call the constructor of the parent class using the super() method
+    // The super() method calls the constructor of the parent class and allows us to pass the parameters to it
+    constructor(id: number, name: string, department: string, teamSize: number) {
+        super(id, name, department);
+        this.teamSize = teamSize;
+    }
+
+    public getTeamSize(): number {
+        return this.teamSize;
+    }
+
+    public getDetails(): string {
+        return `${super.getDetails()}, Team Size: ${this.teamSize}`;
+    }
+}
