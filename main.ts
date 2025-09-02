@@ -1,3 +1,4 @@
+// TS is a better version of JS, it is a superset of JS, which means that any valid JS code is also valid TS code
 export {}
 let message = "Hello World!";
 console.log(message);
