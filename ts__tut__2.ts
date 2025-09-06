@@ -25,3 +25,82 @@
 //* 7.) Advance Features
 //* 8.) Code Quality
 //* 9.) Etc
+
+// To use TypeScript we first need to install nodeJS, TypeScript always compiles down to JavaScript and to execute JavaScript we need NodeJS in our system
+// Always open a fresh terminal after installing NodeJS
+// Now we can wither install TypeScript globally using npm or we can install TypeScript in VSCode itself
+// OR we can install typescript for each directory
+//* npm install typescript --save-dev
+// After installing TypeScript we would need to compile our TypeScript Code to JavaScript, everytime we run our code
+var userName:string = "Hardik Singh";
+// var name = "sam";we cannot declare var name as it is already present in our Document
+// now in command line run: npx tsc ts__tut__2.ts
+// lets say we write more code in the file after compiling, then we would again need to compile the TypeScript file
+// to prevent that we can use command: npx tsc ts__tut__2.ts --watch
+
+//* Data Types in TypeScript
+// In a variable what type of Data you want to store, that is called a Data Type
+// Categories of Data Type: Primitive, Object, Special, Advanced, Function
+// Primitive Data Types are in-built in TypeScript: string, number, boolean, bigint, symbol, null, undefined
+let stringVariable:string = "This is a String";
+let numberVariable:number = 1.998;
+let booleanVariable:boolean = true;
+let bigintVariable:bigint = 9007199254740991n; // Example BigInt with 'n' suffix
+let symbolVariable:symbol = Symbol("This is a String");
+let nullVariable:null = null;
+let undefinedVariable:undefined
+// Object Data Types includes: Array(Collection of same Data Type), Tuples(Array with fixed size and elements with different data types), Objects(Collection of Key Value pair, Array and Tuple are built in Object Data Types, that is, they are syntactical sugar, in the root they are instances of Objects)
+let arrayVariable1:Array<string> = ["a", "b", "cat"];
+let arrayVariable2:number[] = [1, 2, 3, 4];
+let tupleVariable1:[ string ,number] = ["Hardik", 23]// Tuple is simply an array with fixed length
+let objectVariable1:{ name: string, age: number} = {name: "Hardik",age: 23}// Object is collection of key value pair
+
+// Special Data Types: Any, Unknown, Void, Never
+let anyVariable1: any = 10// Any can accept any Data Type
+let anyVariable2: any = "10"// Any can accept any Data Type
+let unknownVariable1: unknown = "Hello";// unknown is similar to any, the only difference being that it requires Type Checking before use or operation
+let voidVariable: () => void = () => {
+    console.log("This function returns nothing");
+};// refers to return data type of a function whose return is unspecified, that is, it can or it cannot return anything
+let neverVariable: () => never = () => {
+    throw new Error("This function never returns!");
+};// used for functions that never return anything, like throwing an error
+
+// Advanced Data Types: Union, Intersection, Type Alias, Enum, Literal Types
+let unionVariable: string | number;// Union Data Type allows assign values of multiple data types
+unionVariable = "Hardik";
+unionVariable = 23;
+// Intersection
+type Employee = { name: string};
+type Manager = { department: string};
+type TeamLead = Employee & Manager;
+let lead: TeamLead = { name: "Hardik", department: "Engineering"};
+// Type Alias, defining your custom Data Types
+type ID = string | number;
+let userId: ID = "user123";
+// ENUm
+enum Role {
+    Admin, 
+    User,
+    Guest
+}// choose only specified value
+let userRole: Role = Role.Admin;
+// Literal Value, It means exactly that value
+let direction: "up" | "down";
+direction = "up";
+// direction = "left";, this will result in error
+
+
+// Function Types
+let add: (x: number, y: number) => number;
+add = (x, y) => x + y;
+
+// Deep dive in Number Data Type
+let num1: number = 23;// this line in TS file will give an error after compiling, as TS will say that the compiled JS file has the same variable in the same scope declares, This issue is solved in ts.config file
+//* Apply Number Data Type on a Variable
+//* Redeclare Issue
+//* How to add Number with data type
+//* How to use binary and Hexadecimal numbers 
+//* Convert String to Number
+//* Type Inference with number
+//* Decimal with number data type
