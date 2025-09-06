@@ -97,10 +97,42 @@ add = (x, y) => x + y;
 
 // Deep dive in Number Data Type
 let num1: number = 23;// this line in TS file will give an error after compiling, as TS will say that the compiled JS file has the same variable in the same scope declares, This issue is solved in ts.config file
-//* Apply Number Data Type on a Variable
-//* Redeclare Issue
-//* How to add Number with data type
-//* How to use binary and Hexadecimal numbers 
-//* Convert String to Number
-//* Type Inference with number
-//* Decimal with number data type
+let octalValueIncorrect: number = 00001;// This will give an error saying Octal Values are not allowed
+let octalValueCorrect: number = 0o00001;
+let hexaValueIncorrect: number = 00001;// This will give an error saying Octal Values are not allowed
+let hexaValueCorrect: number = 0x00001;
+let binaryValueIncorrect: number = 00001;// This will give an error saying Octal Values are not allowed
+let binaryValueCorrect: number = 0b00001;
+// Type Conversion
+let item: number = 10;
+let item2 = "10";
+// let item2Converted = Number(item2);
+let item2Converted =+ item2;// will work the same as above
+console.log(item + item2Converted);
+// OR
+console.log(item+ + item2);
+// Type Inference, andaaza lgana athava anumaan lagaana
+
+// Deep Dive into String and Boolean Data Type
+let stringVariable2: string = "Hardik"; 
+let stringVariable3: string = 'Hardik'; 
+let stringVariable4: string = `Hardik`;
+let ageNumber: number = 30;
+let usernameString: string = "Hardik Singh";
+let infoString: string = `My name is ${usernameString} and my age is ${ageNumber}`;
+console.log(infoString);
+let numberData: number = 100;
+let convertToString1: string = numberData.toString();
+let convertToString2: string = " " + numberData;
+let booleanData1: boolean = true
+let convertToString3: string = booleanData1.toString();
+let convertToString4: string ="" + booleanData1;
+// Type Inference
+// If we do not specify the type of a variable in TypeScript, it assumes thr value by analyzing the initial passed value and prevents reassigning of values
+
+// Deep Dive into NUll and Undefined Data Types
+// `null` and `undefined` are Primitive Data Types
+// A complete Vacuum of value is called `null`
+// When a variable is initialized but there os no value assigned to it, then it has undefined value
+let nullVariable: null = null;
+let undefinedVariable: undefind = undefined;
