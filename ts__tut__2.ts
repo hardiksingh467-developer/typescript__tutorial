@@ -136,3 +136,25 @@ let convertToString4: string ="" + booleanData1;
 // When a variable is initialized but there os no value assigned to it, then it has undefined value
 let nullVariable: null = null;
 let undefinedVariable: undefind = undefined;
+
+console.log(typeof null);// object
+
+//* Configuration File in TypeScript
+// Whenever we build projects in TypeScript, we may need to change the configuration in TypeScript as we build our project according to out requirement
+// CREATE a tsconfig.json file
+// we use command: tsc --init, if TypeScript is installed globally, npx tsc --init, if it is installed locally
+// On first look we will see a lot of comments in the file, which are there so that we can uncomment those properties and use them as per our requirement
+// Also if we simply run tsc, all our TS files will get compiled to JS files
+// there is a property called outdir, in our tsconfig.json, if we want all our compiled files to be stored in a directory, we need to specify the path of that directory on the value of outdir
+// There is another property in tsconfig.json called declaration, if we uncomment it and assign the value `true` to it, we will get a filename.d.ts file for every filename.ts file, and in that we will have all the variables specified in it
+
+
+// Deep Dive into BigInt Data Type
+// This  data type is mostly used in very big projects
+console.log(Number.MAX_SAFE_INTEGER);
+let bigNumberVariable: number = Number.MAX_SAFE_INTEGER + 2
+console.log(bigNumberVariable);// it will print the same number as JavScript cannot count any further
+let bigIntVariable: bigint = 9007199254740991n
+console.log(bigIntVariable + 2n);
+
+// Deep Dive in Symbol Data Type
