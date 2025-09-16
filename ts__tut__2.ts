@@ -158,3 +158,20 @@ let bigIntVariable: bigint = 9007199254740991n
 console.log(bigIntVariable + 2n);
 
 // Deep Dive in Symbol Data Type
+// This datatype is very rarely used, but wherever it is used there is no alternative to it
+// This datatype always generate a unique value, even if we keep the key to be same
+let symbolVariable1: symbol = Symbol("key1");
+let symbolVariable2: symbol = Symbol("key1");
+console.log(symbolVariable1 === symbolVariable2);// false
+console.log(symbolVariable1) // Symbol(key1)
+console.log(symbolVariable2) // Symbol(key1)
+// if we go to out tsconfig file and change the target to ES5, then we will get an error as Symbol is not supported in ES5
+const objectId = Symbol("id");
+const objectExample = {
+    name: "Hardik",
+    age: 23,
+    [objectId]: 1
+}
+console.log(objectExample[objectId]);// 1
+
+// How to use TypeScript for input fields
