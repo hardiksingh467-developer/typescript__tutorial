@@ -175,3 +175,29 @@ const objectExample = {
 console.log(objectExample[objectId]);// 1
 
 // How to use TypeScript for input fields
+// ExpressJS, NestJS, ReactJS, NextJS
+// Here we are using TS with HTML
+// Create an HTML file and link the compiled JS file in it
+// add input fields in it
+// In HTML we still need to add the JS file
+// In the button onClick, we pass a JS function which will be triggered
+// and now we will create this function in our TS file
+function getInfo(){
+    console.log("This is print")
+    const inputElement = document.getElementById("inputId") as HTMLInputElement;
+
+    const inputId: string = inputElement.value;
+}
+
+
+//* Video 12: Array Data Type in TS
+// An array is collection of similar data type
+let arrayVariable3: string[] = ["Hardik", "Singh", "is", "a", "developer"];
+let arrayVariable4: Array<number> = [1, 2, 3, 4, 5];
+let arrayVariable5: number[] = [10, 20, 30, 40, 50];
+let arrayVariable6: Array<string> = ["a", "b", "c", "d"];
+// If we want to use multiple data types in an array, TS refers it to as Tuple, If we do not define the data type of elements in an array then TS would simply treat that as a Tuple
+// We can also create read only arrays
+let readOnlyArray: ReadonlyArray<number> = [1, 2, 3, 4, 5];
+
+// Multi-Dimensional Array
