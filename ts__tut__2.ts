@@ -201,3 +201,27 @@ let arrayVariable6: Array<string> = ["a", "b", "c", "d"];
 let readOnlyArray: ReadonlyArray<number> = [1, 2, 3, 4, 5];
 
 // Multi-Dimensional Array
+
+//** In TS Array and Tuple are two different things **
+// A Tuple length iss fixed and it is a collection of different data types
+// Each element in a Tuple has a specific type
+
+let tupleVariable: [number, string, boolean] = [1, "Hardik", true];
+// adding another element OR a different data type in different position will give an error
+// To create another element in Tuple
+tupleVariable.push(2);// we can add elements using push method
+// To update an element in Tuple
+tupleVariable[0] = 10;// updating first element from 1 to 10
+// tupleVariable[0] = "Ten";// this will give an error as first element is of type number
+// To remove a specific element from Tuple
+tupleVariable.pop();// removes the last element
+
+// Notice that creating another value in Tuple using push is not giving any error, this is because TS cannot check the length of Tuple after its creation, so it allows adding more elements using push method
+
+// We can also make the Tuple Read Only
+let readOnlyTuple: Readonly<[number, string, boolean]> = [1, "Hardik", true];
+
+
+
+
+//** Object Data Type in TS **
