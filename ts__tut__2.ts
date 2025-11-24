@@ -225,3 +225,29 @@ let readOnlyTuple: Readonly<[number, string, boolean]> = [1, "Hardik", true];
 
 
 //** Object Data Type in TS **
+// The data inside object is stored in key value pair 
+const objectVariableOne: {name: string, age: number, city: string} = {
+    name: "Hardik",
+    age: 23,
+    city: "Kota"
+}
+objectVariableOne.company = "Microsoft";// this will give an error as company key is not defined in the object type
+const objectVariableTwo: {[key: string]: string | undefined | number} ={}
+objectVariableTwo["name"] = "Hardik";// this will not give an error as we have defined the key to be of type string and value to be of type string | undefined | number
+
+const objectVariableThree: {name: string, age?: number, address: {
+        houseNo: string,
+        street: string,
+        city: string 
+    }} = {
+    name: "Hardik",
+    age: 23,
+    address: {
+        houseNo: "123",
+        street: "Baran Road",
+        city: "Kota" 
+    }
+}
+objectVariableThree["age"] = 23;
+
+//** Any and Unknown **
