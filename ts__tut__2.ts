@@ -251,3 +251,18 @@ const objectVariableThree: {name: string, age?: number, address: {
 objectVariableThree["age"] = 23;
 
 //** Any and Unknown **
+// Any datatype allows us to store any data type, it is mostly used in dealing with API responses, working with third party libraries that lack type definition
+let anyVariable: any = 10;
+anyVariable = "Hardik Singh";
+anyVariable = true;
+
+// Unknown datatype is similar to any, the only difference being that it requires Type Checking before use or operation
+let unknownVariable: unknown = "Hello, World!";
+unknownVariable = 42;
+unknownVariable = false;
+// console.log(unknownVariable.toUpperCase());// this will give an error as TS does not know the data type of unknownVariable
+if(typeof unknownVariable === "string"){
+    console.log(unknownVariable.toUpperCase());// this will work as we have done Type Checking
+}
+
+//** Return Type in Function **
